@@ -4,16 +4,70 @@
     box-sizing: border-box;
 }
 
-
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://i.postimg.cc/QMN2WVtc/background.png');
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
 
 #gameContainer {
     position: relative;
-    width: 400px;
-    height: 600px;
-    background-image: url(background.png);
-    background: fixed;
+    width: 90vw; /* Responsive width */
+    height: 70vh; /* Responsive height */
+    max-width: 400px; /* Prevents the game from scaling too large */
+    max-height: 600px;
+    background-image: url('https://i.postimg.cc/QMN2WVtc/background.png');
+    background-size: cover;
+    animation: moveBackground 5s linear infinite;
     overflow: hidden;
     border: 2px solid #000;
+}
+
+/* Responsive Design for Bird and Pipes */
+#bird {
+    position: absolute;
+    width: 6vw; /* Scale the bird based on screen size */
+    height: 6vw;
+    background-image: url('https://i.postimg.cc/Dy3WqKKx/png-clipart-flappy-bird-illustration-flappy-bird-app-store-sprite-scratch-game-rectangle-thumbnail.png');
+    background-size: cover;
+    top: 50%;
+    left: 10vw; /* Adjust initial position */
+    transform: translateY(-50%);
+    display: none;
+    transition: top 0.2s ease-out;
+}
+
+#pipe, #pipeTop {
+    position: absolute;
+    width: 12vw; /* Responsive pipe width */
+    background-image: url('https://i.postimg.cc/GtjHLqmk/38-388476-flappy-bird-pipes-png-bottle-1.png');
+    background-size: cover;
+    display: none;
+}
+
+#pipe {
+    bottom: 0;
+    border-radius: 10px 10px 5px 6px;
+}
+
+#pipeTop {
+    top: 0;
+    border-radius: 10px 10px 5px 6px;
+}
+
+#score {
+    position: absolute;
+    top: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5vw;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    display: none;
 }
 
 #menu, #gameOverMenu {
@@ -27,108 +81,23 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    animation: fadeIn 0.5s ease-in-out;
 }
 
 #menu h1, #gameOverMenu h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+    font-size: 8vw; /* Responsive font */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 #menu button, #gameOverMenu button {
-    padding: 10px 20px;
-    font-size: 24px;
+    padding: 2vw 4vw;
+    font-size: 5vw; /* Responsive button size */
     cursor: pointer;
     border: none;
     background-color: #ff5722;
     color: white;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 2vh;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#menu button:hover, #gameOverMenu button:hover {
-    background-color: #e64a19;
-    box-shadow: 0 0 10px rgba(255, 87, 34, 0.7);
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-}
-
-#menu h1, #gameOverMenu h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-
-#menu button, #gameOverMenu button {
-    padding: 10px 20px;
-    font-size: 24px;
-    cursor: pointer;
-    border: none;
-    background-color: #ff5722;
-    color: white;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-#bird {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: yellow; /* Yellow bird */
-    border-radius: 50%;
-    top: 50%;
-    background-image: ;
-    left: 50px;
-    transform: translateY(-50%);
-    display: none;
-}
-
-#pipe, #pipeTop {
-    position: absolute;
-    width: 60px;
-    background-color: green; /* Green pipes */
-    bottom: 0;
-    
-    display: none;
-}
-
-#pipe, #pipeTop {
-    position: absolute;
-    width: 60px;
-    background-color: green; /* Green pipes */
-    border: 3px solid #006400; /* Dark green border */
-    border-radius: 0 0 2px 2px;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
-    display: none;
-}
-
-#pipeTop {
- 
-}
-
-
-@keyframes movePipe {
-    0% {
-        left: 100%;
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    100% {
-        left: -60px;
-        opacity: 1;
-    }
 }
 
 @keyframes moveBackground {
@@ -140,63 +109,21 @@
     }
 }
 
-
-#score {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 32px;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    display: none;
-}
-
-
-
-
-
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url('https://i.postimg.cc/QMN2WVtc/background.png'); /* Background image */
-    background-size: cover;
-    font-family: Arial, sans-serif;
-}
-
-
-
-#pipe {
-    position: absolute;
-    width: 60px;
-    
-    background-size: cover;
-    bottom: 0;
-    display: none;
-    border-radius: 10px 10px 5px 6px;
-}
-
-#pipeTop {
-    position: absolute;
-    width: 60px;
-   
-    background-size: cover;
-    top: 0;
-    display: none;
-    border-radius: 10px 10px 5px 6px;
-}
-#bird {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: yellow; /* Yellow bird */
-    border-radius: 50%;
-    top: 50%;
-    left: 50px;
-    transform: translateY(-50%);
-    display: none;
-    transition: top 0.2s ease-out; /* Smooth transition */
+@media (min-width: 600px) {
+    #bird {
+        width: 30px;
+        height: 30px;
+    }
+    #pipe, #pipeTop {
+        width: 60px;
+    }
+    #score {
+        font-size: 32px;
+    }
+    #menu h1, #gameOverMenu h1 {
+        font-size: 48px;
+    }
+    #menu button, #gameOverMenu button {
+        font-size: 24px;
+    }
 }
