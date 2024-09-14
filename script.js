@@ -21,9 +21,14 @@ let pipePassed = false;
 
 startButton.addEventListener('click', startGame);
 restartButton.addEventListener('click', startGame);
-document.addEventListener('keydown', () => {
+
+// Add touch support for mobile devices
+document.addEventListener('keydown', jumpBird);
+document.addEventListener('touchstart', jumpBird); // Touch event for mobile
+
+function jumpBird() {
     if (gameStarted) birdTop += jump;
-});
+}
 
 function startGame() {
     menu.style.display = 'none';
@@ -61,7 +66,7 @@ function gameLoop() {
 
     if (
         birdRect.top <= 0 ||
-        birdRect.bottom >= 600 ||
+        birdRect.bottom >= window.innerHeight ||
         (birdRect.left < pipeRect.right && birdRect.right > pipeRect.left &&
             (birdRect.bottom > pipeRect.top || birdRect.top < pipeTopRect.bottom))
     ) {
@@ -95,7 +100,7 @@ function endGame() {
 }
 
 function resetGame() {
-    birdTop = 250;
+    birdTop = window.innerHeight / 2 - 15; // Centers the bird
     score = 0;
     scoreDisplay.textContent = score;
     pipe.style.left = '400px';
@@ -105,6 +110,6 @@ function resetGame() {
 
 function resetPipes() {
     let pipeHeight = Math.floor(Math.random() * 200) + 150;
-    pipe.style.height = (600 - pipeHeightGap - pipeHeight) + 'px';
+    pipe.style.height = (window.innerHeight - pipeHeightGap - pipeHeight) + 'px';
     pipeTop.style.height = pipeHeight + 'px';
 }
